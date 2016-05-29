@@ -38,8 +38,6 @@
 #      --norc option. The --rcfile file option will force Bash to read and
 #      execute commands from file instead of ~/.bashrc.
 
-
-
 # -----------------------------------
 # -- 1.1) Set up umask permissions --
 # -----------------------------------
@@ -169,9 +167,6 @@ PS1="\[\033[0;34m\][\u@\h:\w]$\[\033[0m\]"
 ## -----------------------
 
 # 2.1) Safety
-alias rm="rm -i"
-alias mv="mv -i"
-alias cp="cp -i"
 set -o noclobber
 
 # 2.2) Listing, directories, and motion
@@ -189,10 +184,8 @@ alias du='du -ch --max-depth=1'
 alias treeacl='tree -A -C -L 2'
 
 # 2.3) Text and editor commands
-alias em='emacs -nw'     # No X11 windows
-alias eqq='emacs -nw -Q' # No config and no X11
-export EDITOR='emacs -nw'
-export VISUAL='emacs -nw' 
+#alias em='emacs -nw'     # No X11 windows
+#alias eqq='emacs -nw -Q' # No config and no X11 
 
 # 2.4) grep options
 export GREP_OPTIONS='--color=auto'
@@ -208,7 +201,10 @@ export LC_ALL=POSIX
 # http://stackoverflow.com/a/677212
 command -v rlwrap >/dev/null 2>&1 || { echo >&2 "Install rlwrap to use node: sudo apt-get install -y rlwrap";}
 
-# 2.7) node.js and nvm
+# 2.7) shortcuts
+alias cdrails="cd /home/ubuntu/development/coursera/rubyonrails"
+
+# 2.8) node.js and nvm
 # http://nodejs.org/api/repl.html#repl_repl
 alias node="env NODE_NO_READLINE=1 rlwrap node"
 alias node_repl="node -e \"require('repl').start({ignoreUndefined: true})\""
@@ -224,4 +220,11 @@ fi
 ## ------------------------------
 
 ## Define any user-specific variables you want here.
-source ~/.bashrc_custom
+#source ~/.bashrc_custom
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export PATH="/opt/SublimeText2:$PATH"
+
+## Remove any repetitions in PATH
+PATH="$(echo $PATH | perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, scalar <>))')"
