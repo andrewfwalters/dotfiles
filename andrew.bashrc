@@ -66,11 +66,12 @@
 #  Conversely, if the default group name is *different* from the username
 #  AND the user id is greater than 99, we're on the server, and set umask
 #  022 for easy collaborative editing.
-if [ "`id -gn`" == "`id -un`" -a `id -u` -gt 99 ]; then
-	umask 002
-else
-	umask 022
-fi
+#if [ "`id -gn`" == "`id -un`" -a `id -u` -gt 99 ]; then
+#	umask 002
+#else
+#	umask 022
+#fi
+umask 022
 
 # ---------------------------------------------------------
 # -- 1.2) Set up bash prompt and ~/.bash_eternal_history --
@@ -210,6 +211,16 @@ fi
 ## ------------------------------
 ## -- 3) User-customized code  --
 ## ------------------------------
+
+# Get rid of annoying gedit output
+function g() {
+    if [ ! -n "$1" ]; then
+        echo if;
+    else
+        (gedit "$@" &>/dev/null &);
+    fi
+}
+export -f g
 
 ## Define any user-specific variables you want here.
 #source ~/.bashrc_custom
