@@ -213,9 +213,11 @@ fi
 
 ## Define any user-specific variables you want here.
 #source ~/.bashrc_custom
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# rbenv variables defined in /etc/profile.d/rbenv.sh
+# uncomment the followning 4 lines to use local install
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="/opt/SublimeText2:$PATH"
 
 ## Remove any repetitions in PATH
