@@ -71,7 +71,7 @@
 #else
 #	umask 022
 #fi
-umask 022
+umask 002
 
 # ---------------------------------------------------------
 # -- 1.2) Set up bash prompt and ~/.bash_eternal_history --
