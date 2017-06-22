@@ -215,7 +215,7 @@ fi
 # Get rid of annoying gedit output
 function g() {
     if [ ! -n "$1" ]; then
-        echo if;
+        (gedit &>/dev/null &);
     else
         (gedit "$@" &>/dev/null &);
     fi
